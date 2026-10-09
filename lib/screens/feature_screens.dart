@@ -96,7 +96,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
       subtitle:Text('پایه ${x['grade_level']}  •  کد ${x['class_code']}\n${teachersFor(x)}'),
       isThreeLine:true,
       leading:const Icon(Icons.meeting_room),
-      trailing:Wrap(mainAxisSize:MainAxisSize.min, children:[IconButton(tooltip:'تعیین استاد',icon:const Icon(Icons.person_add_alt_1_rounded),onPressed:()=>assignTeacher(x)),IconButton(tooltip:'حذف کلاس',icon:const Icon(Icons.delete_outline_rounded,color:Colors.redAccent),onPressed:()=>deleteClass(x))]),
+      trailing:Wrap(children:[IconButton(tooltip:'تعیین استاد',icon:const Icon(Icons.person_add_alt_1_rounded),onPressed:()=>assignTeacher(x)),IconButton(tooltip:'حذف کلاس',icon:const Icon(Icons.delete_outline_rounded,color:Colors.redAccent),onPressed:()=>deleteClass(x))]),
     ));}))
   ]));
 }
