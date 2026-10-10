@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 
 class AnimatedGlassField extends StatelessWidget {
   final TextEditingController? controller;
+
+  // پارامترهای نسخه قبلی ویجت
+  final String? label;
+  final IconData? icon;
+
+  // پارامترهای تکمیلی
   final String? hintText;
   final String? labelText;
   final Widget? prefixIcon;
@@ -23,6 +29,8 @@ class AnimatedGlassField extends StatelessWidget {
   const AnimatedGlassField({
     super.key,
     this.controller,
+    this.label,
+    this.icon,
     this.hintText,
     this.labelText,
     this.prefixIcon,
@@ -45,6 +53,11 @@ class AnimatedGlassField extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = accentColor ?? const Color(0xFF0A5B4D);
 
+    final effectiveLabel = labelText ?? label;
+    final effectivePrefixIcon =
+        prefixIcon ??
+        (icon != null ? Icon(icon, color: color) : null);
+
     return TextFormField(
       controller: controller,
       initialValue: controller == null ? initialValue : null,
@@ -64,15 +77,15 @@ class AnimatedGlassField extends StatelessWidget {
       ),
       cursorColor: color,
       decoration: InputDecoration(
+        labelText: effectiveLabel,
         hintText: hintText,
-        labelText: labelText,
-        prefixIcon: prefixIcon,
+        prefixIcon: effectivePrefixIcon,
         suffixIcon: suffixIcon,
-        hintStyle: TextStyle(
-          color: Colors.white.withValues(alpha: 0.55),
-        ),
         labelStyle: TextStyle(
           color: Colors.white.withValues(alpha: 0.8),
+        ),
+        hintStyle: TextStyle(
+          color: Colors.white.withValues(alpha: 0.55),
         ),
         filled: true,
         fillColor: Colors.white.withValues(alpha: 0.07),
